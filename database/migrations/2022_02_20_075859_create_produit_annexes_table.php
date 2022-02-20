@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('produit_annexes', function (Blueprint $table) {
             $table->id();
-            $table->string("Nbre_Clients_Bénéficaires");
+            $table->string("Nbre_Clients_Beneficaires");
             $table->string("Nbre_Transactions_Domestiques");
             $table->string("Nbre_Transactions_Domestiques_COVID");
             $table->string("Nbre_Transactions_International");

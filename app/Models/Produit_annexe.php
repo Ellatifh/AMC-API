@@ -14,7 +14,7 @@ class Produit_annexe extends Model
      *
      * @var string
      */
-    protected $table = 'contrats';
+    protected $table = 'produit_annexes';
 
     /**
      * The primary key associated with the table.
