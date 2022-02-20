@@ -54,4 +54,5 @@ class Contrat extends Model
         "Creance_Abandon",
         "Montant_Radiation"
     ];
+    protected $hidden = ['created_at','updated_at'];
 }

@@ -35,8 +35,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::get('/amc', [AmcController::class, 'index']);
+    Route::get('/amc/{id}', [AmcController::class, 'show']);
+    Route::post('/amc', [AmcController::class, 'store']);
     Route::get('/agences', [AgenceController::class, 'index']);
+    Route::get('/agences/{id}', [AgenceController::class, 'show']);
     Route::get('/contrats', [ContratController::class, 'index']);
+    Route::get('/contrats/{id}', [ContratController::class, 'show']);
     Route::get('/produit_annexes', [ProduitAnnexeController::class, 'index']);
+    Route::get('/produit_annexes/{id}', [ProduitAnnexeController::class, 'show']);
     Route::get('/tiers', [TierController::class, 'index']);
+    Route::get('/tiers/{id}', [TierController::class, 'show']);
 });

@@ -14,7 +14,7 @@ class Amc extends Model
      *
      * @var string
      */
-    protected $table = 'amc';
+    protected $table = 'amcs';
 
     /**
      * The primary key associated with the table.
@@ -39,4 +39,6 @@ class Amc extends Model
         'Nbre_guichets_mobiles_urbain',
         'Nbre_guichets_mobiles_rural'
     ];
+
+    protected $hidden = ['created_at','updated_at'];
 }

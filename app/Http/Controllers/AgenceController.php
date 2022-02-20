@@ -6,7 +6,6 @@ use App\Models\Agence;
 use App\Traits\ApiResponser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AgenceController extends Controller
 {
@@ -18,7 +17,7 @@ class AgenceController extends Controller
      */
     public function index()
     {
-        $data = DB::table('agences')->get();
+        $data = Agence::get();
         return $this->success([
             "agences" => $data
         ]);
@@ -51,9 +50,10 @@ class AgenceController extends Controller
      * @param  \App\Models\Agence  $agence
      * @return \Illuminate\Http\Response
      */
-    public function show(Agence $agence)
+    public function show($id)
     {
-        //
+        $data = Agence::where('id',$id)->first();
+        return $this->success(["agences"=>$data]);
     }
 
     /**

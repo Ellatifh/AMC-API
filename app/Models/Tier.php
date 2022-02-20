@@ -38,4 +38,6 @@ class Tier extends Model
         "ANNEE_NAISSANCE",
         "NOMBRE_PERSONNE_CHARGE"
     ];
+
+    protected $hidden = ['created_at','updated_at'];
 }

@@ -18,7 +18,7 @@ class TierController extends Controller
      */
     public function index()
     {
-        $data = DB::table('tiers')->get();
+        $data = Tier::get();
         return $this->success([
             "tiers" => $data
         ]);
@@ -51,9 +51,10 @@ class TierController extends Controller
      * @param  \App\Models\Tier  $tier
      * @return \Illuminate\Http\Response
      */
-    public function show(Tier $tier)
+    public function show($id)
     {
-        //
+        $data = Tier::where('id',$id)->first();
+        return $this->success(["tiers"=>$data]);
     }
 
     /**

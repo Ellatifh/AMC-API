@@ -37,4 +37,5 @@ class Produit_annexe extends Model
         "Nbre_CE_Annuel",
         "Solde_Stock_CE"
     ];
+    protected $hidden = ['created_at','updated_at'];
 }

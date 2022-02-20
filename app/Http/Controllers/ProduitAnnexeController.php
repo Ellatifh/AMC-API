@@ -18,7 +18,7 @@ class ProduitAnnexeController extends Controller
      */
     public function index()
     {
-        $data = DB::table('produit_annexes')->get();
+        $data = Produit_annexe::get();
         return $this->success([
             "produit_annexes" => $data
         ]);
@@ -51,9 +51,10 @@ class ProduitAnnexeController extends Controller
      * @param  \App\Models\Produit_annexe  $produit_annexe
      * @return \Illuminate\Http\Response
      */
-    public function show(Produit_annexe $produit_annexe)
+    public function show($id)
     {
-        //
+        $data = Produit_annexe::where('id',$id)->first();
+        return $this->success(["produit_annexes"=>$data]);
     }
 
     /**

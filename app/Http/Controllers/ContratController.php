@@ -18,7 +18,10 @@ class ContratController extends Controller
      */
     public function index()
     {
-        //
+        $data = Contrat::get();
+        return $this->success([
+            "contrats" => $data
+        ]);
     }
 
     /**
@@ -48,12 +51,10 @@ class ContratController extends Controller
      * @param  \App\Models\Contrat  $contrat
      * @return \Illuminate\Http\Response
      */
-    public function show(Contrat $contrat)
+    public function show($id)
     {
-        $data = DB::table('contrats')->get();
-        return $this->success([
-            "contrats" => $data
-        ]);
+        $data = Contrat::where('id',$id)->first();
+        return $this->success(["contrats"=>$data]);
     }
 
     /**
