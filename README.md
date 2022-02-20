@@ -35,10 +35,6 @@ Run the database migration
 ```
 php artisan migrate
 ```
-generate a secret Key for **JWT**
-```
-php artisan jwt:secret
-```
 ### Running the app
 To run the app use the following command :
 ```
