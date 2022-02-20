@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Amc extends Model
+class Agence extends Model
 {
     use HasFactory;
 
-        /**
+    /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'amc';
+    protected $table = 'agences';
 
     /**
      * The primary key associated with the table.
@@ -29,14 +29,16 @@ class Amc extends Model
      * @var array
      */
     protected $fillable = [
-        'Amc_Nom',
-        'Effectif_total',
-        'Charges_globales',
-        'Effectif_siège',
-        'Effectif_terrain',
-        'Nbre_agences_rural',
-        'Nbre_agences_urbain',
-        'Nbre_guichets_mobiles_urbain',
-        'Nbre_guichets_mobiles_rural'
+        'Code_Agence',
+        'Type_Agence',
+        'Latitude',
+        'Longitude',
+        'Code_Commune',
+        'Code_Region',
+        'Code_Province',
+        'Effectif_Siege',
+        'Effectif_Terrain',
+        'Effectif_Total'
     ];
+
 }
