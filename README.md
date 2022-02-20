@@ -35,6 +35,10 @@ Run the database migration
 ```
 php artisan migrate
 ```
+insert some fake data to the database migration
+```
+php artisan db:seed
+```
 ### Running the app
 To run the app use the following command :
 ```
