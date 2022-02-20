@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contrat;
+use App\Traits\ApiResponser;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContratController extends Controller
 {
+    use ApiResponser;
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +50,10 @@ class ContratController extends Controller
      */
     public function show(Contrat $contrat)
     {
-        //
+        $data = DB::table('contrats')->get();
+        return $this->success([
+            "contrats" => $data
+        ]);
     }
 
     /**

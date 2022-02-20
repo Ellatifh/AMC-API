@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agence;
+use App\Traits\ApiResponser;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AgenceController extends Controller
 {
+    use ApiResponser;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,10 @@ class AgenceController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('agences')->get();
+        return $this->success([
+            "agences" => $data
+        ]);
     }
 
     /**

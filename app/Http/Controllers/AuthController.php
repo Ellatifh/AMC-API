@@ -34,23 +34,31 @@ class AuthController extends Controller
         ]);
 
         return $this->success([
-            'token' => $user->createToken('API Token')->plainTextToken
+            'token' => $user->createToken('API Token')->plainTextToken,
+            "token_type" => "bearer"
         ]);
     }
 
     public function login(Request $request)
     {
-        $attr = $request->validate([
+        $validation = Validator::make($request->all(),[
             'email' => 'required|string|email|',
             'password' => 'required|string|min:6'
         ]);
+
+        if($validation->fails()) {
+            return $this->error("invalid parametres",400,$validation->errors());
+        }
+
+        $attr = $request->All();
 
         if (!Auth::attempt($attr)) {
             return $this->error('Credentials not match', 401);
         }
 
         return $this->success([
-            'token' => auth()->user()->createToken('API Token')->plainTextToken
+            'token' => auth()->user()->createToken('API Token')->plainTextToken,
+            "token_type" => "bearer"
         ]);
     }
 

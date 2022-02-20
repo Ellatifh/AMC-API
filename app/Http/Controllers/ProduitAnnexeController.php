@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produit_annexe;
+use App\Traits\ApiResponser;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProduitAnnexeController extends Controller
 {
+    use ApiResponser;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,10 @@ class ProduitAnnexeController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('produit_annexes')->get();
+        return $this->success([
+            "produit_annexes" => $data
+        ]);
     }
 
     /**
