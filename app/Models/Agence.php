@@ -40,5 +40,5 @@ class Agence extends Model
         'Effectif_Terrain',
         'Effectif_Total'
     ];
-    protected $hidden = ['created_at','updated_at'];
+    protected $hidden = ['id','created_at','updated_at'];
 }

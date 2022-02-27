@@ -11,7 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    public $externalToken = null; 
     /**
      * The attributes that are mass assignable.
      *
@@ -32,6 +32,10 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function setToken($token){
+        $this->externalToken = $token;
+    }
 
     /**
      * The attributes that should be cast.
