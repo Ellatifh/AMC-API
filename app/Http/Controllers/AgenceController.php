@@ -34,7 +34,6 @@ class AgenceController extends Controller
             }
         }
         foreach ($data->chunk(10) as $value) {
-            Http::withHeaders($headers)->post("$baseurl/api/agences",[$value]);
             $this->saveAgences($value);
             echo "record saved : ".$value;
         }        

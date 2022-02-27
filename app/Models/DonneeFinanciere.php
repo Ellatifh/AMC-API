@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tier extends Model
+class DonneeFinanciere extends Model
 {
     use HasFactory;
-
-    /**
+           /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'tiers';
+    protected $table = 'donneefinancieres';
 
     /**
      * The primary key associated with the table.
@@ -29,16 +28,13 @@ class Tier extends Model
      * @var array
      */
     protected $fillable = [
-        "ID_CLIENT",
-        "STATUT",
-        "STATUT_MARITAL",
-        "NIVEAU_ETUDE",
-        "PROFESSION",
-        "SEXE",
-        "ANNEE_NAISSANCE",
-        "NOMBRE_PERSONNE_CHARGE",
-        'published'
+        "Nbre_Clients_Beneficiaires",
+        "Nbre_Transactions_Domestiques",
+        "Nbre_Transactions_Internationales",
+        "Nbre_CB_Annuel",
+        "Nbre_CE_Annuel",
+        "Solde_Stock_CE",
+        "published"
     ];
-
     protected $hidden = ['created_at','updated_at'];
 }

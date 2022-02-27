@@ -37,7 +37,8 @@ class Amc extends Model
         'Nbre_agences_rural',
         'Nbre_agences_urbain',
         'Nbre_guichets_mobiles_urbain',
-        'Nbre_guichets_mobiles_rural'
+        'Nbre_guichets_mobiles_rural',
+        'published'
     ];
 
     protected $hidden = ['created_at','updated_at'];

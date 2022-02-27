@@ -107,6 +107,17 @@ trait ApiServices {
             "Solde_Stock_CE" => $value["Solde_Stock_CE"]
         ]);
     }
+
+    public function saveDonneeFinancieres($value){
+        $response = Http::withHeaders($this->headers)->post("$this->baseurl/api/donneefinanciere",[
+            "Nbre_Clients_Beneficiaires" => $value["Nbre_Clients_Beneficiaires"],
+            "Nbre_Transactions_Domestiques" => $value["Nbre_Transactions_Domestiques"],
+            "Nbre_Transactions_Internationales" => $value["Nbre_Transactions_Internationales"],
+            "Nbre_CB_Annuel" => $value["Nbre_CB_Annuel"],
+            "Nbre_CE_Annuel" => $value["Nbre_CE_Annuel"],
+            "Solde_Stock_CE" => $value["Solde_Stock_CE"]
+        ]);
+    }
 }
 
 ?>

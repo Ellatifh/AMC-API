@@ -52,7 +52,8 @@ class Contrat extends Model
         "Encours",
         "Nombre_Jours_Retards",
         "Creance_Abandon",
-        "Montant_Radiation"
+        "Montant_Radiation",
+        'published'
     ];
     protected $hidden = ['created_at','updated_at'];
 }

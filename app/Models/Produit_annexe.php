@@ -35,7 +35,8 @@ class Produit_annexe extends Model
         "Nbre_Transactions_International",
         "Nbre_CB_Annuel",
         "Nbre_CE_Annuel",
-        "Solde_Stock_CE"
+        "Solde_Stock_CE",
+        'published'
     ];
     protected $hidden = ['created_at','updated_at'];
 }

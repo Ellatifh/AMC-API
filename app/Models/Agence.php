@@ -38,7 +38,8 @@ class Agence extends Model
         'Code_Province',
         'Effectif_Siege',
         'Effectif_Terrain',
-        'Effectif_Total'
+        'Effectif_Total',
+        'published'
     ];
     protected $hidden = ['id','created_at','updated_at'];
 }
