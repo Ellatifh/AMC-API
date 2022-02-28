@@ -46,7 +46,7 @@ class AgenceController extends Controller
                 }
             }
         }
-        echo json_encode(["data to be published"=>count($data),"published"=>count($Inserted),"Non Inserted"=>$nonInserted]);    
+        echo json_encode(["data to be published"=>count($data),"published"=>count($Inserted),"Errors"=>$nonInserted]);    
     }
 
     /**
