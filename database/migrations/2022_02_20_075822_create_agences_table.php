@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('agences', function (Blueprint $table) {
             $table->id();
             $table->string('Code_Agence');
-            $table->string('Type_Agence');
-            $table->string('Latitude');
-            $table->string('Longitude');
+            $table->double('Type_Agence');
+            $table->double('Latitude');
+            $table->double('Longitude');
             $table->string('Code_Commune');
             $table->integer('Code_Region');
             $table->integer('Code_Province');

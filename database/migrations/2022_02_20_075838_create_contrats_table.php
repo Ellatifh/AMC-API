@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string("Charge_mensuelle");
             $table->string("Duree_Pret");
             $table->string("revenu_Mensuel_Net");
-            $table->string("Montant");
+            $table->double("Montant");
             $table->string("Type_pret");
             $table->string("Periodicite_Remboursement");
             $table->string("Garantie");

@@ -34,9 +34,7 @@ trait ApiServices {
                 return 200;
             }
         } catch (\Throwable $th) {
-            $errors = explode("errors", $th->getMessage());
-            return count($errors) > 1 ? $errors[1] : 
-            (count(explode("#section-6.5.1\",\"title\":",$th->getMessage()))>1 ? explode("#section-6.5.1\",\"title\":",$th->getMessage())[1] : $th->getMessage());
+            return $th->getMessage();
         }
     }
 
@@ -50,9 +48,7 @@ trait ApiServices {
                 return 200;
             }
         } catch (\Throwable $th) {
-            $errors = explode("errors", $th->getMessage());
-            return count($errors) > 1 ? $errors[1] : 
-            (count(explode("#section-6.5.1\",\"title\":",$th->getMessage()))>1 ? explode("#section-6.5.1\",\"title\":",$th->getMessage())[1] : $th->getMessage());
+            return $th->getMessage();
         }
     }
 
@@ -66,9 +62,7 @@ trait ApiServices {
                 return 200;
             }
         } catch (\Throwable $th) {
-            $errors = explode("errors", $th->getMessage());
-            return count($errors) > 1 ? $errors[1] : 
-            (count(explode("#section-6.5.1\",\"title\":",$th->getMessage()))>1 ? explode("#section-6.5.1\",\"title\":",$th->getMessage())[1] : $th->getMessage());
+                return $th->getMessage();
         }
     }
 
@@ -82,9 +76,7 @@ trait ApiServices {
                 return 200;
             }
         } catch (\Throwable $th) {
-            $errors = explode("errors", $th->getMessage());
-            return count($errors) > 1 ? $errors[1] : 
-            (count(explode("#section-6.5.1\",\"title\":",$th->getMessage()))>1 ? explode("#section-6.5.1\",\"title\":",$th->getMessage())[1] : $th->getMessage());
+            return $th->getMessage();
         }
     }
 
@@ -98,9 +90,7 @@ trait ApiServices {
                 return 200;
             }
         } catch (\Throwable $th) {
-            $errors = explode("errors", $th->getMessage());
-            return count($errors) > 1 ? $errors[1] : 
-            (count(explode("#section-6.5.1\",\"title\":",$th->getMessage()))>1 ? explode("#section-6.5.1\",\"title\":",$th->getMessage())[1] : $th->getMessage());
+            return $th->getMessage();
         }
     }
 
@@ -114,9 +104,7 @@ trait ApiServices {
                 return 200;
             }
         } catch (\Throwable $th) {
-            $errors = explode("errors", $th->getMessage());
-            return count($errors) > 1 ? $errors[1] : 
-            (count(explode("#section-6.5.1\",\"title\":",$th->getMessage()))>1 ? explode("#section-6.5.1\",\"title\":",$th->getMessage())[1] : $th->getMessage());
+            return $th->getMessage();
         }
     }
 }

@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('tiers', function (Blueprint $table) {
             $table->id();
             $table->string("ID_CLIENT");
-            $table->string("STATUT");
-            $table->string("STATUT_MARITAL");
-            $table->string("NIVEAU_ETUDE");
+            $table->integer("STATUT");
+            $table->integer("STATUT_MARITAL");
+            $table->integer("NIVEAU_ETUDE");
             $table->string("PROFESSION");
             $table->string("SEXE");
-            $table->string("ANNEE_NAISSANCE");
-            $table->string("NOMBRE_PERSONNE_CHARGE");
+            $table->integer("ANNEE_NAISSANCE");
+            $table->integer("NOMBRE_PERSONNE_CHARGE");
             $table->timestamps();
         });
     }
