@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Amc;
 use App\Traits\ApiResponser;
+use App\Traits\ApiServices;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AmcController extends Controller
 {
-    use ApiResponser;
+    use ApiResponser,ApiServices;
 
     /**
      * Display a listing of the resource.
@@ -145,5 +146,40 @@ class AmcController extends Controller
         return $this->success([
             'record' => $row
         ],"deleted successfully",200);
+    }
+
+    public function publish()
+    {
+        $data = AMC::where("published", false)->get([
+            'Amc_Nom',
+            'Effectif_total',
+            'Charges_globales',
+            'Effectif_siège',
+            'Effectif_terrain',
+            'Nbre_agences_rural',
+            'Nbre_agences_urbain',
+            'Nbre_guichets_mobiles_urbain',
+            'Nbre_guichets_mobiles_rural'
+        ]);
+        if(\Auth::user()->externalToken == null){
+            $isconnected = $this->connect(); 
+            if($isconnected !== true){
+                return $isconnected;
+            }
+        }
+        $nonInserted = [];
+        $Inserted = [];
+        foreach ($data->chunk(5) as $value) {
+            foreach ($value as $item) {
+                $result = $this->saveAmcs($item);
+                if($result == 200){
+                    AMC::find($item['id'])->update(['published' => 1]);
+                    array_push($Inserted,$agence);
+                }else{
+                    array_push($nonInserted,$result);
+                }
+            }
+        }
+        echo json_encode(["data to be published"=>count($data),"published"=>count($Inserted),"Non Inserted"=>$nonInserted]);    
     }
 }

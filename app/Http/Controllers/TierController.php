@@ -56,38 +56,37 @@ class TierController extends Controller
         $data = Tier::where('id',$id)->first();
         return $this->success(["tiers"=>$data]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Tier  $tier
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Tier $tier)
+    public function publish()
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tier  $tier
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Tier $tier)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Tier  $tier
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Tier $tier)
-    {
-        //
+        $data = Tier::where("published", false)->get([
+            "ID_CLIENT",
+            "STATUT",
+            "STATUT_MARITAL",
+            "NIVEAU_ETUDE",
+            "PROFESSION",
+            "SEXE",
+            "ANNEE_NAISSANCE",
+            "NOMBRE_PERSONNE_CHARGE"
+        ]);
+        if(\Auth::user()->externalToken == null){
+            $isconnected = $this->connect(); 
+            if($isconnected !== true){
+                return $isconnected;
+            }
+        }
+        $nonInserted = [];
+        $Inserted = [];
+        foreach ($data->chunk(5) as $value) {
+            foreach ($value as $item) {
+                $result = $this->saveTiers($item);
+                if($result == 200){
+                    Tier::find($item['id'])->update(['published' => 1]);
+                    array_push($Inserted,$agence);
+                }else{
+                    array_push($nonInserted,$result);
+                }
+            }
+        }
+        echo json_encode(["data to be published"=>count($data),"published"=>count($Inserted),"Non Inserted"=>$nonInserted]);    
     }
 }

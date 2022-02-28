@@ -26,28 +26,27 @@ class AgenceController extends Controller
 
     public function publish()
     {
-        $data = Agence::where("published", false)->get(['Code_Agence','Type_Agence','Latitude','Longitude','Code_Commune','Code_Region','Code_Province']);
+        $data = Agence::where("published", false)->get(['id','Code_Agence','Type_Agence','Latitude','Longitude','Code_Commune','Code_Region','Code_Province']);
         if(\Auth::user()->externalToken == null){
             $isconnected = $this->connect(); 
             if($isconnected !== true){
                 return $isconnected;
             }
         }
-        foreach ($data->chunk(10) as $value) {
-            $this->saveAgences($value);
-            echo "record saved : ".$value;
-        }        
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $nonInserted = [];
+        $Inserted = [];
+        foreach ($data->chunk(5) as $value) {
+            foreach ($value as $agence) {
+                $result = $this->saveAgences($agence);
+                if($result == 200){
+                    Agence::find($agence['id'])->update(['published' => 1]);
+                    array_push($Inserted,$agence);
+                }else{
+                    array_push($nonInserted,$result);
+                }
+            }
+        }
+        echo json_encode(["data to be published"=>count($data),"published"=>count($Inserted),"Non Inserted"=>$nonInserted]);    
     }
 
     /**
@@ -60,39 +59,5 @@ class AgenceController extends Controller
     {
         $data = Agence::where('id',$id)->first();
         return $this->success(["agences"=>$data]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Agence  $agence
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Agence $agence)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Agence  $agence
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Agence $agence)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Agence  $agence
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Agence $agence)
-    {
-        //
     }
 }

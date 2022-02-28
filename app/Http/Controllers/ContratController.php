@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Contrat;
 use App\Traits\ApiResponser;
+use App\Traits\ApiServices;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ContratController extends Controller
 {
-    use ApiResponser;
+    use ApiResponser,ApiServices;
     /**
      * Display a listing of the resource.
      *
@@ -57,37 +58,53 @@ class ContratController extends Controller
         return $this->success(["contrats"=>$data]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Contrat  $contrat
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Contrat $contrat)
+    public function publish()
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contrat  $contrat
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Contrat $contrat)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Contrat  $contrat
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Contrat $contrat)
-    {
-        //
+        $data = Contrat::where("published", false)->get([
+            "ID_Contrat",
+            "ID_Client",
+            "ID_Dossier_Client",
+            "Type_Dossier_Client",
+            "Statut_Dossier_Client",
+            "Code_Agence",
+            "Portefeuille_Agent",
+            "Activite",
+            "Charge_mensuelle",
+            "Duree_Pret",
+            "revenu_Mensuel_Net",
+            "Montant",
+            "Type_pret",
+            "Periodicite_Remboursement",
+            "Garantie",
+            "Periode_Grace",
+            "Taux_Interet_Accorde",
+            "Date_Decaissement",
+            "Date_Premier_Rembourssement",
+            "date_Dernier_Rembourssement",
+            "Encours",
+            "Nombre_Jours_Retards",
+            "Creance_Abandon",
+            "Montant_Radiation"
+        ]);
+        if(\Auth::user()->externalToken == null){
+            $isconnected = $this->connect(); 
+            if($isconnected !== true){
+                return $isconnected;
+            }
+        }
+        $nonInserted = [];
+        $Inserted = [];
+        foreach ($data->chunk(5) as $value) {
+            foreach ($value as $item) {
+                $result = $this->saveContrats($item);
+                if($result == 200){
+                    Contrat::find($item['id'])->update(['published' => 1]);
+                    array_push($Inserted,$agence);
+                }else{
+                    array_push($nonInserted,$result);
+                }
+            }
+        }
+        echo json_encode(["data to be published"=>count($data),"published"=>count($Inserted),"Non Inserted"=>$nonInserted]);    
     }
 }

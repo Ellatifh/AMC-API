@@ -6,6 +6,7 @@ use App\Http\Controllers\AmcController;
 use App\Http\Controllers\AgenceController;
 use App\Http\Controllers\ContratController;
 use App\Http\Controllers\ProduitAnnexeController;
+use App\Http\Controllers\DonneeFinanciere;
 use App\Http\Controllers\TierController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,6 +56,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/produit_annexes/{id}', [ProduitAnnexeController::class, 'show']);
     /**************************************************************** */
 
+    /************************ Donnee Financiere ***************************** */
+    Route::get('/donnee_financieres', [DonneeFinanciere::class, 'index']);
+    Route::get('/donnee_financieres/{id}', [DonneeFinanciere::class, 'show']);
+    /**************************************************************** */
+
     /************************ TIERS ***************************** */
     Route::get('/tiers', [TierController::class, 'index']);
     Route::get('/tiers/{id}', [TierController::class, 'show']);
@@ -65,5 +71,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/agences/publish', [AgenceController::class, 'publish']);
     Route::post('/contrats/publish', [ContratController::class, 'publish']);
     Route::post('/produit_annexes/publish', [ProduitAnnexeController::class, 'publish']);
+    Route::post('/donnee_financieres/publish', [DonneeFinanciere::class, 'publish']);
     Route::post('/tiers/publish', [TierController::class, 'publish']);
 });
