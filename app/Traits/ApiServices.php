@@ -4,10 +4,16 @@ use Illuminate\Support\Facades\Http;
 
 trait ApiServices {
 
-    protected $baseurl = "https://acgcmsreporting.azurewebsites.net";
+   /* protected $baseurl = "https://acgcmsreporting.azurewebsites.net";
     protected $headers = [
         'Content-Type' => 'application/json',
         'X-AMC-Id' => '001'
+    ];*/
+
+    protected $baseurl = "https://acgcmsreporting-datatransfer-api-prod.azurewebsites.net";
+    protected $headers = [
+        'Content-Type' => 'application/json',
+        'X-AMC-Id' => '515'
     ];
     
     public function connect() {
