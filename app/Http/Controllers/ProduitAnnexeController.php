@@ -61,13 +61,16 @@ class ProduitAnnexeController extends Controller
     public function publish()
     {
         $data = Produit_annexe::where("published", false)->get([
-            "Nbre_Clients_Bénéficaires",
-            "Nbre_Transactions_Domestiques",
-            "Nbre_Transactions_Domestiques_COVID",
-            "Nbre_Transactions_International",
-            "Nbre_CB_Annuel",
-            "Nbre_CE_Annuel",
-            "Solde_Stock_CE"
+            "Produit_Annexe_Id",
+            "Total_Bilan",
+            "Fonds_Propres",
+            "Dettes_CT",
+            "Dettes_MLT",
+            "Produits_Operations_Clienteles",
+            "Charges_Exploitation",
+            "Charges_Financieres",
+            "Dotation_Provisions",
+            "Resultat_Periode"
         ]);
         if(\Auth::user()->externalToken == null){
             $isconnected = $this->connect(); 

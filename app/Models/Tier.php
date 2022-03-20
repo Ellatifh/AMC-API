@@ -29,14 +29,14 @@ class Tier extends Model
      * @var array
      */
     protected $fillable = [
-        "ID_CLIENT",
-        "STATUT",
-        "STATUT_MARITAL",
-        "NIVEAU_ETUDE",
-        "PROFESSION",
-        "SEXE",
-        "ANNEE_NAISSANCE",
-        "NOMBRE_PERSONNE_CHARGE",
+        "ID_Client",
+        "Statut",
+        "Statut_Marital",
+        "Niveau_Etude",
+        "Profession",
+        "Sexe",
+        "Annee_Naissance",
+        "Nombre_Personnes_Charge",
         'published'
     ];
 

@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('tiers', function (Blueprint $table) {
             $table->id();
-            $table->string("ID_CLIENT");
-            $table->integer("STATUT");
-            $table->integer("STATUT_MARITAL");
-            $table->integer("NIVEAU_ETUDE");
-            $table->string("PROFESSION");
-            $table->string("SEXE");
-            $table->integer("ANNEE_NAISSANCE");
-            $table->integer("NOMBRE_PERSONNE_CHARGE");
+            $table->string("ID_Client");
+            $table->integer("Statut");
+            $table->integer("Statut_Marital");
+            $table->integer("Niveau_Etude");
+            $table->string("Profession");
+            $table->string("Sexe");
+            $table->integer("Annee_Naissance");
+            $table->integer("Nombre_Personnes_Charge");
             $table->timestamps();
         });
     }

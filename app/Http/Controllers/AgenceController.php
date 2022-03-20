@@ -26,7 +26,18 @@ class AgenceController extends Controller
 
     public function publish()
     {
-        $data = Agence::where("published", false)->get(['id','Code_Agence','Type_Agence','Latitude','Longitude','Code_Commune','Code_Region','Code_Province']);
+        $data = Agence::where("published", false)->get(['id',
+            "Code_Agence",
+            "Type_Agence",
+            "Latitude",
+            "Longitude",
+            "Code_Commune",
+            "Code_Region",
+            "Code_Province",
+            "Effectif_Siege",
+            "Effectif_Terrain",
+            "Effectif_Total"
+        ]);
         if(\Auth::user()->externalToken == null){
             $isconnected = $this->connect(); 
             if($isconnected !== true){

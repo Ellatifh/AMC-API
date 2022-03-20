@@ -151,15 +151,15 @@ class AmcController extends Controller
     public function publish()
     {
         $data = AMC::where("published", false)->get([
-            'Amc_Nom',
+            'AMC_Nom',
             'Effectif_total',
-            'Charges_globales',
-            'Effectif_siège',
-            'Effectif_terrain',
-            'Nbre_agences_rural',
-            'Nbre_agences_urbain',
-            'Nbre_guichets_mobiles_urbain',
-            'Nbre_guichets_mobiles_rural'
+            'Charges_global',
+            'Effectif_Siege',
+            'Effectif_Terrain',
+            'Nbre_Agences_Rural',
+            'Nbre_Agences_Urbain',
+            'Nbre_Guichets_Mobiles_Urbain',
+            'Nbre_Guichets_Mobiles_Rural'
         ]);
         if(\Auth::user()->externalToken == null){
             $isconnected = $this->connect(); 

@@ -15,13 +15,16 @@ return new class extends Migration
     {
         Schema::create('produit_annexes', function (Blueprint $table) {
             $table->id();
-            $table->string("Nbre_Clients_Beneficaires");
-            $table->string("Nbre_Transactions_Domestiques");
-            $table->string("Nbre_Transactions_Domestiques_COVID");
-            $table->string("Nbre_Transactions_International");
-            $table->string("Nbre_CB_Annuel");
-            $table->string("Nbre_CE_Annuel");
-            $table->string("Solde_Stock_CE");
+            $table->string("Produit_Annexe_Id");
+            $table->double("Total_Bilan");
+            $table->double("Fonds_Propres");
+            $table->double("Dettes_CT");
+            $table->double("Dettes_MLT");
+            $table->double("Produits_Operations_Clienteles");
+            $table->double("Charges_Exploitation");
+            $table->double("Charges_Financieres");
+            $table->double("Dotation_Provisions");
+            $table->double("Resultat_Periode");
             $table->timestamps();
         });
     }

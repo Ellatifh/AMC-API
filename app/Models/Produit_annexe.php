@@ -29,13 +29,16 @@ class Produit_annexe extends Model
      * @var array
      */
     protected $fillable = [
-        "Nbre_Clients_Bénéficaires",
-        "Nbre_Transactions_Domestiques",
-        "Nbre_Transactions_Domestiques_COVID",
-        "Nbre_Transactions_International",
-        "Nbre_CB_Annuel",
-        "Nbre_CE_Annuel",
-        "Solde_Stock_CE",
+        "Produit_Annexe_Id",
+        "Total_Bilan",
+        "Fonds_Propres",
+        "Dettes_CT",
+        "Dettes_MLT",
+        "Produits_Operations_Clienteles",
+        "Charges_Exploitation",
+        "Charges_Financieres",
+        "Dotation_Provisions",
+        "Resultat_Periode",
         'published'
     ];
     protected $hidden = ['created_at','updated_at'];

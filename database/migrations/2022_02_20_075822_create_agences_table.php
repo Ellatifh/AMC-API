@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('agences', function (Blueprint $table) {
             $table->id();
             $table->string('Code_Agence');
-            $table->double('Type_Agence');
+            $table->integer('Type_Agence');
             $table->double('Latitude');
             $table->double('Longitude');
             $table->string('Code_Commune');
-            $table->integer('Code_Region');
-            $table->integer('Code_Province');
+            $table->string('Code_Region');
+            $table->string('Code_Province');
             $table->integer('Effectif_Siege');
             $table->integer('Effectif_Terrain');
             $table->integer('Effectif_Total');

@@ -29,16 +29,16 @@ class Agence extends Model
      * @var array
      */
     protected $fillable = [
-        'Code_Agence',
-        'Type_Agence',
-        'Latitude',
-        'Longitude',
-        'Code_Commune',
-        'Code_Region',
-        'Code_Province',
-        'Effectif_Siege',
-        'Effectif_Terrain',
-        'Effectif_Total',
+        "Code_Agence",
+        "Type_Agence",
+        "Latitude",
+        "Longitude",
+        "Code_Commune",
+        "Code_Region",
+        "Code_Province",
+        "Effectif_Siege",
+        "Effectif_Terrain",
+        "Effectif_Total",
         'published'
     ];
     protected $hidden = ['id','created_at','updated_at'];

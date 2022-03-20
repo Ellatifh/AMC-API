@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('amcs', function (Blueprint $table) {
             $table->id();
-            $table->string('Amc_Nom');
-            $table->integer('Effectif_total');
-            $table->integer('Charges_globales');
-            $table->integer('Effectif_siège');
-            $table->integer('Effectif_terrain');
-            $table->integer('Nbre_agences_rural');
-            $table->integer('Nbre_agences_urbain');
-            $table->integer('Nbre_guichets_mobiles_urbain');
-            $table->integer("Nbre_guichets_mobiles_rural");
+            $table->string('AMC_Nom');
+            $table->integer('Effectif_Total');
+            $table->integer('Charges_Global');
+            $table->integer('Effectif_Siege');
+            $table->integer('Effectif_Terrain');
+            $table->integer('Nbre_Agences_Rural');
+            $table->integer('Nbre_Agences_Urbain');
+            $table->integer('Nbre_Guichets_Mobiles_Urbain');
+            $table->integer("Nbre_Guichets_Mobiles_Rural");
             $table->timestamps();
         });
     }

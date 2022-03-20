@@ -59,14 +59,14 @@ class TierController extends Controller
     public function publish()
     {
         $data = Tier::where("published", false)->get([
-            "ID_CLIENT",
-            "STATUT",
-            "STATUT_MARITAL",
-            "NIVEAU_ETUDE",
-            "PROFESSION",
-            "SEXE",
-            "ANNEE_NAISSANCE",
-            "NOMBRE_PERSONNE_CHARGE"
+            "ID_Client",
+            "Statut",
+            "Statut_Marital",
+            "Niveau_Etude",
+            "Profession",
+            "Sexe",
+            "Annee_Naissance",
+            "Nombre_Personnes_Charge"
         ]);
         if(\Auth::user()->externalToken == null){
             $isconnected = $this->connect(); 

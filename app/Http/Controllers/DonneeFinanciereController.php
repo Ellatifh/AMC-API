@@ -42,7 +42,7 @@ class DonneeFinanciereController extends Controller
             "Nbre_Transactions_Internationales",
             "Nbre_CB_Annuel",
             "Nbre_CE_Annuel",
-            "Solde_Stock_CE",
+            "Solde_Stock_CE"
         ]);
         if(\Auth::user()->externalToken == null){
             $isconnected = $this->connect(); 
