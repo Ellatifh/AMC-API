@@ -75,7 +75,7 @@ trait ApiServices {
     public function saveAmcs($amc){
         $request = Http::withHeaders($this->headers)->withToken(\Auth::user()->externalToken);
         try {
-            $response= $request->post("$this->baseurl/api/amc",[$amc]);
+            $response= $request->put("$this->baseurl/api/amc",[$amc]);
             if($response->failed()){
                 $response->throw();
             }else{
